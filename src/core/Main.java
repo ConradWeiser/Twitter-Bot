@@ -1,10 +1,39 @@
 package core;
 
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.conf.Configuration;
+import commands.Commands;
+
 public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+	//Store the twitter object to use within the class
+	private static Twitter twitter = null;
+	
+	private static void initialize(){
+		//Get the settings to access the server.
+		Config configbuilder = new Config();
+		Configuration config = configbuilder.getSettings().build();
+		
+		TwitterFactory tf = new TwitterFactory(config);
+		twitter = tf.getInstance();
 	}
+	
+	public static Twitter getTwitter() {
+		return twitter;
+	}
+	
+	public static void main(String[] args) {
+
+		initialize();
+		
+		//Create the commands instance
+		Commands command = new Commands();
+		
+		//Run the test command
+		command.searchQuery("Rain");
+	}
+
+
 
 }
