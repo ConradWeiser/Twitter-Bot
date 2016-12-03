@@ -7,16 +7,44 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class filter {
+	private static final String FILENAME = "whitelist.txt";
+	
+	List<String> output = null;
+	
+	@SuppressWarnings({ "null", "resource" })
 	public List<String> createFile() {
-		List<String> output;
 		
 		
+		BufferedReader br = null;
+
+		try {
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader(FILENAME));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				output.add(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 		
 		return output;
 	}
 	
-	public void filterContent(List<Status> status){
-		List<String> output;
+	@SuppressWarnings("null")
+	public List<Status> filterContent(List<Status> status){
+		List<Status> filtered = null;
+		for (Status element : status){
+			for (int i = 0; i < output.size(); i++) {
+				if (output.get(i).contains(element.getText())){
+					filtered.add((Status) element);
+				}
+			}
+		}
 		
+		return filtered;
 	}
 }
