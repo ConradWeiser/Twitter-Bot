@@ -27,6 +27,7 @@ public class Commands {
 
 		double longitude = tweet.getGeoLocation().getLongitude();
 		double latitude = tweet.getGeoLocation().getLatitude();
+		System.out.println(String.valueOf(longitude) + " : " + String.valueOf(latitude));
 		
 		GeoQuery query = new GeoQuery(new GeoLocation(longitude, latitude));
 		ResponseList<Place> places;
@@ -34,6 +35,12 @@ public class Commands {
 			places = twitter.reverseGeoCode(query);
 			if (places.size() == 0){
 				System.out.println("No location associated with the specified lat/lang");
+			} else {
+				for (Place place : places) {
+					//TODO: Have the function to decide what value it should put in here.
+					System.out.println(place.getFullName());
+					
+				}
 			}
 			
 		} catch (TwitterException e) {
@@ -41,8 +48,8 @@ public class Commands {
 		}
 
 	}
-	
-	public void searchQuery(String queryInput){
+		
+	public List<Status> searchQuery(String queryInput){
 		try{
 			Query query = new Query(queryInput);
 			QueryResult result;
@@ -50,17 +57,18 @@ public class Commands {
 			do {
 				result = twitter.search(query);
 				List<Status> tweets = result.getTweets();
-				for (Status tweet : tweets) {
-					//TODO: Filter these outputs instead of printing to console
-					System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText());
+				
+				for(Status data : tweets){
+					getLocation(data);
 				}
 			} while ((query = result.nextQuery()) != null);
-			System.exit(0);			
+//			System.exit(0);			
 		} catch (TwitterException te) {
 			te.printStackTrace();
 			System.out.println("Failed to search tweets: " + te.getMessage());
 			System.exit(-1);
 		}
+		return null;
 	}
 
 

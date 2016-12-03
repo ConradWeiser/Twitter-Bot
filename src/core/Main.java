@@ -1,14 +1,19 @@
 package core;
 
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.Configuration;
+
+import java.util.List;
+
 import commands.Commands;
 
 public class Main {
 	
 	//Store the twitter object to use within the class
 	private static Twitter twitter = null;
+	private static List<Status> list = null;
 	
 	private static void initialize(){
 		//Get the settings to access the server.
@@ -29,9 +34,13 @@ public class Main {
 		
 		//Create the commands instance
 		Commands command = new Commands();
+		filter filter = new filter();
 		
-		//Run the test command
-		command.searchQuery("Rain");
+		filter.createFile();
+		list = filter.filterContent(command.searchQuery("puppies"));
+		
+		
+		
 	}
 
 
