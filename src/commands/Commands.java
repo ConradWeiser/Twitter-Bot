@@ -27,7 +27,6 @@ public class Commands {
 
 		double longitude = tweet.getGeoLocation().getLongitude();
 		double latitude = tweet.getGeoLocation().getLatitude();
-		System.out.println(String.valueOf(longitude) + " : " + String.valueOf(latitude));
 		
 		GeoQuery query = new GeoQuery(new GeoLocation(longitude, latitude));
 		ResponseList<Place> places;
@@ -39,6 +38,7 @@ public class Commands {
 				for (Place place : places) {
 					//TODO: Have the function to decide what value it should put in here.
 					System.out.println(place.getFullName());
+					System.out.println(place.getStreetAddress());
 					
 				}
 			}

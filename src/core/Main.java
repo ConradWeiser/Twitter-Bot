@@ -34,9 +34,8 @@ public class Main {
 		
 		//Create the commands instance
 		Commands command = new Commands();
-		filter filter = new filter();
 		
-		command.searchQuery("Storm");
+		command.searchQuery("rain");
 		
 		
 	}
