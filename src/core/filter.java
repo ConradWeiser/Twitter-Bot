@@ -11,6 +11,7 @@ public class filter {
 	
 	List<String> output = null;
 	
+	
 	public List<String> createFile() {
 		
 		
