@@ -13,6 +13,7 @@ public class Main {
 	
 	//Store the twitter object to use within the class
 	private static Twitter twitter = null;
+	@SuppressWarnings("unused")
 	private static List<Status> list = null;
 	
 	private static void initialize(){

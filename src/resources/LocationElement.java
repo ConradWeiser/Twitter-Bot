@@ -1,7 +1,6 @@
 package resources;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
@@ -15,6 +14,7 @@ public class LocationElement {
 	private double latitude;
 	
 	private String weatherStatus;
+	@SuppressWarnings("unused")
 	private String[] weightedWords;
 	
 	public void setWeightedWords(String[] weightedWords){
@@ -47,8 +47,8 @@ public class LocationElement {
 	
 	//A method which should be run after you get all of the weighted words.
 	//This method takes all of the words and decides which one is the most relevent. (Used most often)
+	@SuppressWarnings("resource")
 	public void findWeightedWord(){
-		@SuppressWarnings("resource")
 		int freq = 0;
 		Scanner keyboard = new Scanner(System.in);
 	    String[] myPhrase = keyboard.nextLine().split(" ");
