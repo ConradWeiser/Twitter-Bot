@@ -32,6 +32,7 @@ public class Main {
 
 		initialize();
 		
+		
 		//Create the commands instance
 		Commands command = new Commands();
 		

@@ -23,31 +23,6 @@ public class Commands {
 		twitter = core.Main.getTwitter();
 	}
 	
-	private void getLocation(Status tweet){
-
-		double longitude = tweet.getGeoLocation().getLongitude();
-		double latitude = tweet.getGeoLocation().getLatitude();
-		
-		GeoQuery query = new GeoQuery(new GeoLocation(longitude, latitude));
-		ResponseList<Place> places;
-		try {
-			places = twitter.reverseGeoCode(query);
-			if (places.size() == 0){
-				System.out.println("No location associated with the specified lat/lang");
-			} else {
-				for (Place place : places) {
-					//TODO: Have the function to decide what value it should put in here.
-					System.out.println(place.getFullName());
-					System.out.println(place.getStreetAddress());
-					
-				}
-			}
-			
-		} catch (TwitterException e) {
-			e.printStackTrace();
-		}
-
-	}
 		
 	public void searchQuery(String queryInput){
 		try{
@@ -59,8 +34,9 @@ public class Commands {
 				List<Status> tweets = result.getTweets();
 				
 				for(Status data : tweets){
+					//Make sure that the GeoLocation is available before we send it for filtering
 					if(data.getGeoLocation() != null){
-						getLocation(data);
+						
 					}
 				}
 			} while ((query = result.nextQuery()) != null);
