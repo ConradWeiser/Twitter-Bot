@@ -11,7 +11,6 @@ public class filter {
 	
 	List<String> output = null;
 	
-	@SuppressWarnings({ "null", "resource" })
 	public List<String> createFile() {
 		
 		
