@@ -36,8 +36,6 @@ public class Main {
 		Commands command = new Commands();
 		filter filter = new filter();
 		
-		//filter.createFile();
-		
 		
 		
 		

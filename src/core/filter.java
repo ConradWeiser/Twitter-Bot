@@ -7,12 +7,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class filter {
-	private static final String FILENAME = "whitelist.txt";
+	private static final String FILENAME = "whiteList.txt";
 	
 	List<String> output = null;
 	
 	
-	public List<String> createFile() {
+	public void createFile() {
 		
 		
 		BufferedReader br = null;
@@ -30,12 +30,11 @@ public class filter {
 
 			e.printStackTrace();
 		}
-		
-		return output;
 	}
 	
 	@SuppressWarnings("null")
 	public List<Status> filterContent(List<Status> status){
+		createFile();
 		List<Status> filtered = null;
 		for (Status element : status){
 			for (int i = 0; i < output.size(); i++) {
