@@ -12,20 +12,21 @@ public class filter {
 	
 	List<String> whitelistConditions = null;
 	List<Status> filteredStatus = null;
+	// 0 - Rainy
+	// 1 - Freezing
+	// 2 - Sunny
+	// 3 - Humid
+	// 4 - Stormy
+	// 5 - Snowing
+	// 6 - Gloomy
+	// 7 - Cloudy
+	int[] values = {0,0,0,0,0,0,0,0};
 	
 	public List<Status> getResults(){
 		return filteredStatus;
 	}
 	
-	public void weightTweet(Status tweet){
-		
-
-		
-	}
-	
 	public void createFile() {
-		
-		
 		BufferedReader br = null;
 
 		try {
@@ -51,9 +52,39 @@ public class filter {
 			for (int i = 0; i < whitelistConditions.size(); i++) {
 				if (whitelistConditions.get(i).contains(element.getText())){
 					filtered.add((Status) element);
+					switch (whitelistConditions.get(i)){
+						case "rain":
+							values[0]++;
+							break;
+						case "freezing":
+							values[1]++;
+							break;
+						case "sunny":
+							values[2]++;
+							break;
+						case "humid":
+							values[3]++;
+							break;
+						case "stormy":
+							values[4]++;
+							break;
+						case "snow":
+							values[5]++;
+							break;
+						case "gloomy":
+							values[6]++;
+							break;
+						case "cloudy":
+							values[7]++;
+							break;
+					}
 				}
 			}
 		}
 		filteredStatus = filtered;
+		
+		
+		
+		
 	}
 }
