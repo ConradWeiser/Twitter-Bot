@@ -1,6 +1,8 @@
 package core;
 
 import java.util.List;
+import java.util.Scanner;
+
 import twitter4j.Status;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +13,11 @@ public class filter {
 	
 	List<String> output = null;
 	
+	public void weightTweet(Status tweet){
+		
+
+		
+	}
 	
 	public void createFile() {
 		
