@@ -1,20 +1,45 @@
 package commands;
 
+import twitter4j.GeoLocation;
+import twitter4j.GeoQuery;
+import twitter4j.Place;
 import twitter4j.Query;
 import twitter4j.QueryResult;
+import twitter4j.ResponseList;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Commands {
 	
 	private Twitter twitter = null;
+	private HashMap<Place, String> locationList = null;
 	
 	public Commands(){
 		//Get the twitter instance
 		twitter = core.Main.getTwitter();
+	}
+	
+	private void getLocation(Status tweet){
+
+		double longitude = tweet.getGeoLocation().getLongitude();
+		double latitude = tweet.getGeoLocation().getLatitude();
+		
+		GeoQuery query = new GeoQuery(new GeoLocation(longitude, latitude));
+		ResponseList<Place> places;
+		try {
+			places = twitter.reverseGeoCode(query);
+			if (places.size() == 0){
+				System.out.println("No location associated with the specified lat/lang");
+			}
+			
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	public void searchQuery(String queryInput){
@@ -26,6 +51,7 @@ public class Commands {
 				result = twitter.search(query);
 				List<Status> tweets = result.getTweets();
 				for (Status tweet : tweets) {
+					//TODO: Filter these outputs instead of printing to console
 					System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText());
 				}
 			} while ((query = result.nextQuery()) != null);
@@ -36,5 +62,6 @@ public class Commands {
 			System.exit(-1);
 		}
 	}
+
 
 }
