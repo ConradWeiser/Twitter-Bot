@@ -49,7 +49,7 @@ public class Commands {
 
 	}
 		
-	public List<Status> searchQuery(String queryInput){
+	public void searchQuery(String queryInput){
 		try{
 			Query query = new Query(queryInput);
 			QueryResult result;
@@ -59,16 +59,17 @@ public class Commands {
 				List<Status> tweets = result.getTweets();
 				
 				for(Status data : tweets){
-					getLocation(data);
+					if(data.getGeoLocation() != null){
+						getLocation(data);
+					}
 				}
 			} while ((query = result.nextQuery()) != null);
-//			System.exit(0);			
+			System.exit(0);			
 		} catch (TwitterException te) {
 			te.printStackTrace();
 			System.out.println("Failed to search tweets: " + te.getMessage());
 			System.exit(-1);
 		}
-		return null;
 	}
 
 
