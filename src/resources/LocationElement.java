@@ -12,6 +12,7 @@ public class LocationElement {
 	private String weatherStatus;
 	private String[] weightedWords;
 	
+	
 	public void setWeightedWords(String[] weightedWords){
 		this.weightedWords = weightedWords;
 	}
@@ -40,8 +41,6 @@ public class LocationElement {
 		return this.weatherStatus;
 	}
 	
-	//A method which should be run after you get all of the weighted words.
-	//This method takes all of the words and decides which one is the most relevent. (Used most often)
-	
+
 
 }

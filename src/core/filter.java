@@ -57,6 +57,8 @@ public class filter {
 		newElement.setLongitude(tweet.getGeoLocation().getLongitude());
 		newElement.setLatitude(tweet.getGeoLocation().getLatitude());
 		
+		//TODO: Run the method to concatinate all of the elements which have gotten to set the active one
+		
 	}
 	
 	public void createFile() {
