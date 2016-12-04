@@ -49,7 +49,7 @@ public class GUI2 {
 	private void initialize() {
 		frmVvf = new JFrame();
 		frmVvf.getContentPane().setBackground(UIManager.getColor(twitterBlue));
-		frmVvf.setOpacity(100.0f);
+		//frmVvf.setOpacity(100.0f);
 		frmVvf.setBackground(UIManager.getColor("Table.selectionBackground"));
 		frmVvf.setTitle("Twitter Bot");
 		frmVvf.setForeground(Color.ORANGE);
