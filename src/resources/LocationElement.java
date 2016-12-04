@@ -17,6 +17,7 @@ public class LocationElement {
 	@SuppressWarnings("unused")
 	private String[] weightedWords;
 	
+	
 	public void setWeightedWords(String[] weightedWords){
 		this.weightedWords = weightedWords;
 	}
@@ -66,5 +67,6 @@ public class LocationElement {
 	        }
 	    }
 	}
+
 
 }
