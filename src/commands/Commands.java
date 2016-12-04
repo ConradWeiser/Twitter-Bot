@@ -1,11 +1,8 @@
 package commands;
 
-import twitter4j.GeoLocation;
-import twitter4j.GeoQuery;
 import twitter4j.Place;
 import twitter4j.Query;
 import twitter4j.QueryResult;
-import twitter4j.ResponseList;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -16,6 +13,7 @@ import java.util.List;
 public class Commands {
 	
 	private Twitter twitter = null;
+	@SuppressWarnings("unused")
 	private HashMap<Place, String> locationList = null;
 	
 	public Commands(){

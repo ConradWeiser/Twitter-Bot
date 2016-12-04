@@ -48,7 +48,7 @@ public class GUI2 {
 		
 		JTextPane txtpnToCheckWeather = new JTextPane();
 		txtpnToCheckWeather.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtpnToCheckWeather.setBackground(UIManager.getColor("Button.background"));
+		txtpnToCheckWeather.setBackground(UIManager.getColor(0, 172, 237));
 		txtpnToCheckWeather.setText("To check weather conditions within a region, type in a state.");
 		txtpnToCheckWeather.setBounds(10, 11, 349, 34);
 		frame.getContentPane().add(txtpnToCheckWeather);
@@ -71,7 +71,7 @@ public class GUI2 {
 		
 		JTextPane txtpnRegionsAndConditions = new JTextPane();
 		txtpnRegionsAndConditions.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		txtpnRegionsAndConditions.setBackground(UIManager.getColor("Button.background"));
+		txtpnRegionsAndConditions.setBackground(UIManager.getColor(0));
 		txtpnRegionsAndConditions.setText("Regions and Conditions");
 		txtpnRegionsAndConditions.setBounds(10, 100, 215, 20);
 		frame.getContentPane().add(txtpnRegionsAndConditions);
